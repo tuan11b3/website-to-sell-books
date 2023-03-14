@@ -33,7 +33,13 @@
                     <div class="cart-row">
                         <div style="flex:1"><img class="row-image" src="{{item.product.imageURL}}"></div>
                         <div style="flex:2"><p>{{item.product.name}}<p></p></div>
-                        <div style="flex:1"><p>$ {{item.product.price|floatformat:2}}</p></div>
+
+                         {% if item.product.discount > 0.00 %}
+                    <div style="flex:1"><p>$ {{item.product.discount|floatformat:2}}</p></div>
+                    {% else %}
+                    <div style="flex:1"><p>$ {{item.product.price|floatformat:2}}</p></div>
+                    {% endif %}
+
                         <div style="flex:1">
                             <p class="quantity">x{{item.quantity}}</p>
                             <div class="quantity">
@@ -42,7 +48,7 @@
                             </div>
                         </div>
                         <div style="flex:1">
-                            <i data-product="{{item.product.id}}" data-action="delete" class="fa-solid fa-trash-can update-cart"></i>
+                            <img src="{% static 'images/trash.png' %}" data-action="delete" data-product="{{item.product.id}}"  class="chg-quantity update-cart"></img>
                         </div>
                         <div style="flex:1; color: black;">$ {{item.get_total}}</div>
                     </div>

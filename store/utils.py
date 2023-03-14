@@ -12,7 +12,7 @@ def cartData(request):
         cartItems = cookieData['cartItems']
         order = cookieData['order']
         items = cookieData['items']
-        print("------item--------", items)
+        #print("------item--------", items)
     return {'cartItems':cartItems, 'order':order, 'items':items}
 
 def cookieCart(request):
@@ -20,7 +20,7 @@ def cookieCart(request):
         cart = json.loads(request.COOKIES['cart'])
     except:
         cart = {}
-    print('Cart:', cart)
+    # print('Cart:', cart)
     items = []
     order = {'get_cart_total': 0, 'get_cart_items': 0}
     cartItems = order['get_cart_items']
@@ -39,11 +39,15 @@ def cookieCart(request):
             order['get_cart_total'] += total
             order['get_cart_items'] += cart[i]['quantity']
 
+            price = product.price
+            if product.discount > 0.00:
+                price = product.discount
+
             item = {
                 'product': {
                     'id': product.id,
                     'name': product.name,
-                    'price': product.price,
+                    'price': price,
                     'imageURL': product.imageURL,
                 },
                 'quantity': cart[i]['quantity'],

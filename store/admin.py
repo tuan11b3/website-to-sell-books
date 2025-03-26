@@ -8,8 +8,9 @@ admin.site.register(Category)
 admin.site.register(Product)
 admin.site.register(Order)
 admin.site.register(OrderItem)
-admin.site.register(ShippingAddress)
-admin.site.register(DSDCKM)
+admin.site.register(Staff)
+#admin.site.register(ShippingAddress)
+#admin.site.register(DSDCKM)
 
 class FeedbackAdmin(admin.ModelAdmin):
     list_display = ('id', 'date', 'happy', 'responded', 'staff_id')

@@ -7,7 +7,7 @@ User = settings.AUTH_USER_MODEL
 
 
 class Staff(models.Model):
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_id = models.OneToOneField(User, on_delete=models.SET_NULL, blank=True, null=True)
     fullname = models.CharField(max_length=200, null=True)
     email = models.EmailField(max_length=255, null=True)
     phone = PhoneNumberField(null=False, blank=False, unique=True)

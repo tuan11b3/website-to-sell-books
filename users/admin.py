@@ -28,14 +28,14 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(myUser, CustomUserAdmin)
 
-class CustomStaff(admin.ModelAdmin):
-    list_display = ('id', 'fullname', 'email', 'phone', 'cmnd', 'address', 'salary', 'date_joined')
-    list_filter = ('date_joined', 'salary',)
-    search_fields = ('fullname',)
-
-    class Meta:
-        model = Staff
-
-
-admin.site.register(Staff, CustomStaff)
+# class CustomStaff(admin.ModelAdmin):
+#     list_display = ('id', 'fullname', 'email', 'phone', 'cmnd', 'address', 'salary', 'date_joined')
+#     list_filter = ('date_joined', 'salary',)
+#     search_fields = ('fullname',)
+#
+#     class Meta:
+#         model = Staff
+#
+#
+# admin.site.register(Staff, CustomStaff)
 
